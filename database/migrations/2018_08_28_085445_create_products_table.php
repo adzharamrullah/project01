@@ -8,7 +8,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 use Dwij\Laraadmin\Models\Module;
 
-class CreateContactsTable extends Migration
+class CreateProductsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -17,11 +17,11 @@ class CreateContactsTable extends Migration
      */
     public function up()
     {
-        Module::generate("Contacts", 'contacts', 'phone', 'fa-envelope', [
-            ["phone", "Phone", "TextField", false, "", 0, 256, true],
-            ["email", "Email", "Email", true, "", 0, 256, true],
-            ["instagram", "Instagram", "TextField", false, "", 0, 256, true],
-            ["line", "Line", "TextField", false, "", 0, 256, true],
+        Module::generate("Products", 'products', 'title', 'fa-ticket', [
+            ["title", "Title", "TextField", false, "", 0, 256, true],
+            ["image", "Image", "Image", false, "", 0, 0, true],
+            ["description", "Description", "HTML", false, "", 0, 0, true],
+            ["category", "Category", "Dropdown", false, "", 0, 0, true, ["Airasia Final Call","Airasia Big Point","Maskapai Domestik","Maskapai International","Promo Tiket","Paket Keluarga","Paket Honeymoon","Paket Sekolah","Paket Perusahaan","Paket Pemerintahan","Rental Mobil"]],
         ]);
 		
 		/*
@@ -67,8 +67,8 @@ class CreateContactsTable extends Migration
      */
     public function down()
     {
-        if (Schema::hasTable('contacts')) {
-            Schema::drop('contacts');
+        if (Schema::hasTable('products')) {
+            Schema::drop('products');
         }
     }
 }
